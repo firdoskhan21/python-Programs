@@ -1,0 +1,39 @@
+
+from elasticsearch import Elasticsearch
+import random
+ob = Elasticsearch([{'host': '192.168.86.98', 'port': 8240}])
+
+
+b1 = {
+        "Author": "Firdos",
+        "city": "Mumbai",
+        "phone": 8297534662,
+        "qualification": "Bsc"
+
+    }
+b2 = {
+        "Author": "Firdos",
+        "city": "thane",
+        "phone": 5646865,
+        "qualification": "Bsc"
+    }
+b3 = {
+        "Author": "Firdos",
+        "city": "pune",
+        "phone": 35545768,
+        "qualification": "Bsc"
+
+    }
+b4 = {
+        "Author": "Firdos",
+        "city": "matheran",
+        "phone": 35486798,
+        "qualification": "Bsc"
+
+    }
+bodylist=[b1,b2,b3,b4]
+for j in range(0,50):
+    res = ob.index(index="demoindex", doc_type="abc",id=j, body=random.choice(bodylist))
+
+
+
